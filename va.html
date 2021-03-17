@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head id="Head">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<title> Consola Ema VIRTUAL ASSISTANT - Asesora Virtual </title>
+		<link id="style" rel="stylesheet" type="text/css" href="emafiles/ax-style.css" />
+		<link rel='SHORTCUT ICON' href='https://www.epm.com.co/site/Portals/0/favicon.ico?ver=2012-01-10-105006-000' type='image/x-icon' />
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+	</head>
+
+	<body id="Body">
+
+	<div style="text-align: center;">
+	<h1 class="ax-logo">Consola integrada de monitoreo de ambientes | Ema - Chatbot Comercial (VIRTUAL ASSISTANT)</h1>
+	</div>
+
+	<div style="text-align: center;">
+		<button id="dispatch-uat-btn" class="buttonCSS buttonCSS2" onclick="location.href='dispatch_uat.html'">Actualizar Dispatch UAT</button>
+		<button id="dispatch-uat-btn" class="buttonCSS buttonCSS2" onclick="location.href='dispatch_prod.html'">Actualizar Dispatch PRODUCCIÓN</button>
+	</div>
+
+<!--Inicia chat-->
+<div class="container-chat-bot mostrarchat" >
+    
+    <div id="wrapper" class="position-chat" style="left: 10px;">
+        <div class="cabezote" id="cabezoteChat">
+			<h1 class="titulo-ambiente">DESARROLLO</h1>
+        </div>
+        <!--Aqui se pega el controlador que llama el chat-->
+            <div id="webchat-dllo" role="main" style="overflow-y: auto; height:451px; ">
+				
+                <script src="https://cdn.botframework.com/botframework-webchat/4.8.0/webchat.js"></script>
+				
+                <script>					
+				
+					(async function() {
+
+						//const apiRequest_d = await fetch('https://func-epm-np-bot-atc-gentoken.azurewebsites.net/api/GenerateDLToken');
+						//const { token } = await apiRequest_d.json();
+						const secret = '96vCiA3peH8.AcLt6bpQngXDGCQsR7m2s0M7VUYjX5DQDQAzsyk5vZs';
+						const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { 
+							body: JSON.stringify({ user: { id: 'dl_user_id', name: 'username' }}),
+							headers: {
+							Authorization: `Bearer ${secret}`,
+							'Content-type': 'application/json'
+							},
+						   method: 'POST',
+						});
+						const { token } = await res.json();
+
+
+						window.WebChat.renderWebChat({
+							directLine: window.WebChat.createDirectLine({ token }),
+							locale: 'es-ES',
+							styleOptions: {
+								rootHeight: '450px',
+								rootWidth: '100%',
+								hideUploadButton: true
+							}
+						}, document.getElementById('webchat-dllo'));
+
+					})().catch(err => console.error(err));	
+
+                </script>
+            </div>
+
+    </div>
+</div>
+<!--Finaliza chat-->
+
+
+<!--Inicia chat-->
+<div class="container-chat-bot mostrarchat" >
+    
+    <div id="wrapper" class="position-chat" style="right:36%">
+        <div class="cabezote" id="cabezoteChat">
+			<h1 class="titulo-ambiente">UAT</h1>
+        </div>
+        <!--Aqui se pega el controlador que llama el chat-->
+            <div id="webchat-uat" role="main" style="overflow-y: auto; height:451px; ">
+			
+                <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat-es5.js"></script>
+				
+                <script>		
+				
+					(async function() {
+
+						//const apiRequest_u = await fetch('https://func-epm-np-bot-atc-gentokenuat.azurewebsites.net/api/GenerateDLToken');
+						//const { token } = await apiRequest_u.json();
+
+						window.WebChat.renderWebChat({
+							directLine: window.WebChat.createDirectLine({
+								token: 'eQtE5hlBzC4.LcUw_YXNfZl4PzU12kIuOC_KkJUous8jBk0Ic7isTaI'
+							}),
+							locale: 'es-ES',
+							styleOptions: {
+								rootHeight: '450px',
+								rootWidth: '100%',
+								hideUploadButton: true
+							}
+						}, document.getElementById('webchat-uat'));
+
+					})().catch(err => console.error(err));	
+					
+                </script>
+            </div>
+
+    </div>
+</div>
+<!--Finaliza chat-->
+
+<!--Inicia chat-->
+<!--Inicia chat-->
+<div class="container-chat-bot mostrarchat" >
+
+    <div id="wrapper" class="position-chat" style="right: 10px;">
+        <div class="cabezote" id="cabezoteChat">
+			<h1 class="titulo-ambiente">PRODUCCIÓN</h1>
+        </div>
+        <!--Aqui se pega el controlador que llama el chat-->
+            <div id="webchat-prod" role="main" style="overflow-y: auto; height:451px; ">
+                <script src="https://cdn.botframework.com/botframework-webchat/4.5.2/webchat-es5.js"></script>
+
+				<script>		
+				
+					(async function() {
+
+						//const apiRequest_p = await fetch('https://func-epm-prod-bot-atc-gentoken.azurewebsites.net/api/GenerateDLToken');
+						//const { token } = await apiRequest_p.json();
+						const token = "0bMxPZcjwd4.2wrQMAgmEKxwd9D9ktFmsNhjKNStfIi7iKlVi5DC7PM";
+						
+						window.WebChat.renderWebChat({
+							directLine: window.WebChat.createDirectLine({
+								token: token
+							}),
+							locale: 'es-ES',
+							styleOptions: {
+								rootHeight: '450px',
+								rootWidth: '100%',
+								hideUploadButton: true
+							}
+						}, document.getElementById('webchat-prod'));
+
+					})().catch(err => console.error(err));			
+					
+                </script>
+				
+            </div>
+
+    </div>
+</div>
+<!--Finaliza chat-->
+
+	</body>
+
+</html>
