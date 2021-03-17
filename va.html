@@ -9,21 +9,13 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 	</head>
 
-	<body id="Body">
+<body id="Body">
 
-<!--	<div style="text-align: center;">
-	<h1 class="ax-logo">Ema Asesora Virtual - Página Interna</h1>
-	</div>
--->
 	
 <!--Inicia chat-->
 <div class="container-chat-bot mostrarchat" >
     
-    <!--<div id="wrapper" class="position-chat" style="left: 10px;">
-        <div class="cabezote" id="cabezoteChat">
-			<h1 class="titulo-ambiente">DESARROLLO</h1>
-        </div>-->
-        <!--Aqui se pega el controlador que llama el chat-->
+    <!--Aqui se pega el controlador que llama el chat-->
             <div id="webchat-dllo" role="main"> 
 				
                 <script src="https://cdn.botframework.com/botframework-webchat/4.8.0/webchat.js"></script>
@@ -34,7 +26,9 @@
 
 						//const apiRequest_d = await fetch('https://func-epm-np-bot-atc-gentoken.azurewebsites.net/api/GenerateDLToken');
 						//const { token } = await apiRequest_d.json();
-						const secret = '96vCiA3peH8.AcLt6bpQngXDGCQsR7m2s0M7VUYjX5DQDQAzsyk5vZs';
+						//const secret = '96vCiA3peH8.AcLt6bpQngXDGCQsR7m2s0M7VUYjX5DQDQAzsyk5vZs';
+						const secret = '0bMxPZcjwd4.2wrQMAgmEKxwd9D9ktFmsNhjKNStfIi7iKlVi5DC7PM';
+						
 						const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { 
 							body: JSON.stringify({ user: { id: 'dl_user_id', name: 'username' }}),
 							headers: {
